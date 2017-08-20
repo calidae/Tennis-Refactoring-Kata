@@ -9,9 +9,9 @@ if (typeof TennisGame3 === "undefined") {
 }
 
 var allScores = [
-    [0, 0, "Res-All"],
-    [1, 1, "Quinze-All"],
-    [2, 2, "Trenta-All"],
+    [0, 0, "Res-Tot"],
+    [1, 1, "Quinze-Tot"],
+    [2, 2, "Trenta-Tot"],
     [3, 3, "Iguals"],
     [4, 4, "Iguals"],
 
@@ -128,7 +128,7 @@ var getConsoleReporter = function() {
             if (this.errors > 0) {
                 console.log("Got " + this.errors + " failure(s)!");
             } else {
-                console.log("Done, all OK ");
+                console.log("Done, Tot OK ");
             }
         }
     };

@@ -11,7 +11,7 @@ TennisGame3.prototype.getScore = function() {
     if ((this.p1 < 4 && this.p2 < 4) && (this.p1 + this.p2 < 6)) {
         var p = ["Res", "Quinze", "Trenta", "Quaranta"];
         s = p[this.p1];
-        return (this.p1 == this.p2) ? s + "-All" : s + "-" + p[this.p2];
+        return (this.p1 == this.p2) ? s + "-Tot" : s + "-" + p[this.p2];
     } else {
         if (this.p1 == this.p2)
             return "Iguals";

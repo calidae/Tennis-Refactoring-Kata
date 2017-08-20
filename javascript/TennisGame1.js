@@ -18,13 +18,13 @@ TennisGame1.prototype.getScore = function() {
     if (this.m_score1 === this.m_score2) {
         switch (this.m_score1) {
             case 0:
-                score = "Res-All";
+                score = "Res-Tot";
                 break;
             case 1:
-                score = "Quinze-All";
+                score = "Quinze-Tot";
                 break;
             case 2:
-                score = "Trenta-All";
+                score = "Trenta-Tot";
                 break;
             default:
                 score = "Iguals";

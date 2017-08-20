@@ -19,7 +19,7 @@ TennisGame2.prototype.getScore = function() {
             score = "Quinze";
         if (this.P1point === 2)
             score = "Trenta";
-        score += "-All";
+        score += "-Tot";
     }
     if (this.P1point === this.P2point && this.P1point > 2)
         score = "Iguals";
