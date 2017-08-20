@@ -1,6 +1,6 @@
 *.class
 *.pyc
-.idea/workspace.xml
 *.swp
+*.vscode
 .DS_Store
 /javascript/node_modules/
