@@ -19,20 +19,20 @@ class TennisGame1:
         tempScore=0
         if (self.p1points==self.p2points):
             result = {
-                0 : "Love-All",
-                1 : "Fifteen-All",
-                2 : "Thirty-All",
-            }.get(self.p1points, "Deuce")
+                0 : "Res-Tot",
+                1 : "Quinze-Tot",
+                2 : "Trenta-Tot",
+            }.get(self.p1points, "Iguals")
         elif (self.p1points>=4 or self.p2points>=4):
             minusResult = self.p1points-self.p2points
             if (minusResult==1):
-                result ="Advantage " + self.player1Name
+                result ="Avantatge " + self.player1Name
             elif (minusResult ==-1):
-                result ="Advantage " + self.player2Name
+                result ="Avantatge " + self.player2Name
             elif (minusResult>=2):
-                result = "Win for " + self.player1Name
+                result = "Victoria de " + self.player1Name
             else:
-                result ="Win for " + self.player2Name
+                result ="Victoria de " + self.player2Name
         else:
             for i in range(1,3):
                 if (i==1):
@@ -41,10 +41,10 @@ class TennisGame1:
                     result+="-"
                     tempScore = self.p2points
                 result += {
-                    0 : "Love",
-                    1 : "Fifteen",
-                    2 : "Thirty",
-                    3 : "Forty",
+                    0 : "Res",
+                    1 : "Quinze",
+                    2 : "Trenta",
+                    3 : "Quaranta",
                 }[tempScore]
         return result
 
@@ -66,70 +66,70 @@ class TennisGame2:
         result = ""
         if (self.p1points == self.p2points and self.p1points < 3):
             if (self.p1points==0):
-                result = "Love"
+                result = "Res"
             if (self.p1points==1):
-                result = "Fifteen"
+                result = "Quinze"
             if (self.p1points==2):
-                result = "Thirty"
-            result += "-All"
+                result = "Trenta"
+            result += "-Tot"
         if (self.p1points==self.p2points and self.p1points>2):
-            result = "Deuce"
+            result = "Iguals"
         
         P1res = ""
         P2res = ""
         if (self.p1points > 0 and self.p2points==0):
             if (self.p1points==1):
-                P1res = "Fifteen"
+                P1res = "Quinze"
             if (self.p1points==2):
-                P1res = "Thirty"
+                P1res = "Trenta"
             if (self.p1points==3):
-                P1res = "Forty"
+                P1res = "Quaranta"
             
-            P2res = "Love"
+            P2res = "Res"
             result = P1res + "-" + P2res
         if (self.p2points > 0 and self.p1points==0):
             if (self.p2points==1):
-                P2res = "Fifteen"
+                P2res = "Quinze"
             if (self.p2points==2):
-                P2res = "Thirty"
+                P2res = "Trenta"
             if (self.p2points==3):
-                P2res = "Forty"
+                P2res = "Quaranta"
             
-            P1res = "Love"
+            P1res = "Res"
             result = P1res + "-" + P2res
         
         
         if (self.p1points>self.p2points and self.p1points < 4):
             if (self.p1points==2):
-                P1res="Thirty"
+                P1res="Trenta"
             if (self.p1points==3):
-                P1res="Forty"
+                P1res="Quaranta"
             if (self.p2points==1):
-                P2res="Fifteen"
+                P2res="Quinze"
             if (self.p2points==2):
-                P2res="Thirty"
+                P2res="Trenta"
             result = P1res + "-" + P2res
         if (self.p2points>self.p1points and self.p2points < 4):
             if (self.p2points==2):
-                P2res="Thirty"
+                P2res="Trenta"
             if (self.p2points==3):
-                P2res="Forty"
+                P2res="Quaranta"
             if (self.p1points==1):
-                P1res="Fifteen"
+                P1res="Quinze"
             if (self.p1points==2):
-                P1res="Thirty"
+                P1res="Trenta"
             result = P1res + "-" + P2res
         
         if (self.p1points > self.p2points and self.p2points >= 3):
-            result = "Advantage " + self.player1Name
+            result = "Avantatge " + self.player1Name
         
         if (self.p2points > self.p1points and self.p1points >= 3):
-            result = "Advantage " + self.player2Name
+            result = "Avantatge " + self.player2Name
         
         if (self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2):
-            result = "Win for " + self.player1Name
+            result = "Victoria de " + self.player1Name
         if (self.p2points>=4 and self.p1points>=0 and (self.p2points-self.p1points)>=2):
-            result = "Win for " + self.player2Name
+            result = "Victoria de " + self.player2Name
         return result
     
     def SetP1Score(self, number):
@@ -162,11 +162,11 @@ class TennisGame3:
     
     def score(self):
         if (self.p1 < 4 and self.p2 < 4) and (self.p1 + self.p2 < 6):
-            p = ["Love", "Fifteen", "Thirty", "Forty"]
+            p = ["Res", "Quinze", "Trenta", "Quaranta"]
             s = p[self.p1]
-            return s + "-All" if (self.p1 == self.p2) else s + "-" + p[self.p2]
+            return s + "-Tot" if (self.p1 == self.p2) else s + "-" + p[self.p2]
         else:
             if (self.p1 == self.p2):
-                return "Deuce"
+                return "Iguals"
             s = self.p1N if self.p1 > self.p2 else self.p2N
-            return "Advantage " + s if ((self.p1-self.p2)*(self.p1-self.p2) == 1) else "Win for " + s
+            return "Avantatge " + s if ((self.p1-self.p2)*(self.p1-self.p2) == 1) else "Victoria de " + s

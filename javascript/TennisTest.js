@@ -9,48 +9,48 @@ if (typeof TennisGame3 === "undefined") {
 }
 
 var allScores = [
-    [0, 0, "Love-All"],
-    [1, 1, "Fifteen-All"],
-    [2, 2, "Thirty-All"],
-    [3, 3, "Deuce"],
-    [4, 4, "Deuce"],
+    [0, 0, "Res-All"],
+    [1, 1, "Quinze-All"],
+    [2, 2, "Trenta-All"],
+    [3, 3, "Iguals"],
+    [4, 4, "Iguals"],
 
-    [1, 0, "Fifteen-Love"],
-    [0, 1, "Love-Fifteen"],
-    [2, 0, "Thirty-Love"],
-    [0, 2, "Love-Thirty"],
-    [3, 0, "Forty-Love"],
-    [0, 3, "Love-Forty"],
-    [4, 0, "Win for player1"],
-    [0, 4, "Win for player2"],
+    [1, 0, "Quinze-Res"],
+    [0, 1, "Res-Quinze"],
+    [2, 0, "Trenta-Res"],
+    [0, 2, "Res-Trenta"],
+    [3, 0, "Quaranta-Res"],
+    [0, 3, "Res-Quaranta"],
+    [4, 0, "Victoria de jugador1"],
+    [0, 4, "Victoria de jugador2"],
 
-    [2, 1, "Thirty-Fifteen"],
-    [1, 2, "Fifteen-Thirty"],
-    [3, 1, "Forty-Fifteen"],
-    [1, 3, "Fifteen-Forty"],
-    [4, 1, "Win for player1"],
-    [1, 4, "Win for player2"],
+    [2, 1, "Trenta-Quinze"],
+    [1, 2, "Quinze-Trenta"],
+    [3, 1, "Quaranta-Quinze"],
+    [1, 3, "Quinze-Quaranta"],
+    [4, 1, "Victoria de jugador1"],
+    [1, 4, "Victoria de jugador2"],
 
-    [3, 2, "Forty-Thirty"],
-    [2, 3, "Thirty-Forty"],
-    [4, 2, "Win for player1"],
-    [2, 4, "Win for player2"],
+    [3, 2, "Quaranta-Trenta"],
+    [2, 3, "Trenta-Quaranta"],
+    [4, 2, "Victoria de jugador1"],
+    [2, 4, "Victoria de jugador2"],
 
-    [4, 3, "Advantage player1"],
-    [3, 4, "Advantage player2"],
-    [5, 4, "Advantage player1"],
-    [4, 5, "Advantage player2"],
-    [15, 14, "Advantage player1"],
-    [14, 15, "Advantage player2"],
+    [4, 3, "Avantatge jugador1"],
+    [3, 4, "Avantatge jugador2"],
+    [5, 4, "Avantatge jugador1"],
+    [4, 5, "Avantatge jugador2"],
+    [15, 14, "Avantatge jugador1"],
+    [14, 15, "Avantatge jugador2"],
 
-    [6, 4, "Win for player1"],
-    [4, 6, "Win for player2"],
-    [16, 14, "Win for player1"],
-    [14, 16, "Win for player2"]
+    [6, 4, "Victoria de jugador1"],
+    [4, 6, "Victoria de jugador2"],
+    [16, 14, "Victoria de jugador1"],
+    [14, 16, "Victoria de jugador2"]
 ];
 
-var checkScore = function(reporter, TennisGame, player1Score, player2Score, expectedScore) {
-    var highestScore = Math.max(player1Score, player2Score);
+var checkScore = function(reporter, TennisGame, jugador1Score, jugador2Score, expectedScore) {
+    var highestScore = Math.max(jugador1Score, jugador2Score);
     var game;
     var result;
     var message = "";
@@ -58,13 +58,13 @@ var checkScore = function(reporter, TennisGame, player1Score, player2Score, expe
     var i;
 
     try {
-        game = new TennisGame("player1", "player2");
+        game = new TennisGame("jugador1", "jugador2");
         for (i = 0; i < highestScore; i++) {
-            if (i < player1Score) {
-                game.wonPoint("player1");
+            if (i < jugador1Score) {
+                game.wonPoint("jugador1");
             }
-            if (i < player2Score) {
-                game.wonPoint("player2");
+            if (i < jugador2Score) {
+                game.wonPoint("jugador2");
             }
         }
         result = game.getScore();
