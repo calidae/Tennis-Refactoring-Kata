@@ -22,8 +22,8 @@ const equalsText = 'Iguals'
 const advantageText = 'Avantatge '
 const victoryText = 'Victoria de '
 
-const minimumWinningScore = 4
-const minimumWinningDiff = 2
+const minWinningScore = 4
+const minWinningDiff = 2
 
 TennisGame1.prototype.addPointToPlayer1 = function () {
   this.numScore1 += 1
@@ -58,12 +58,12 @@ TennisGame1.prototype.areTied = function () {
 }
 
 TennisGame1.prototype.isAnyPlayerWinning = function () {
-  return this.numScore1 >= minimumWinningScore || this.numScore2 >= minimumWinningScore
+  return this.numScore1 >= minWinningScore || this.numScore2 >= minWinningScore
 }
 
 TennisGame1.prototype.getAdvantageOrVictory = function () {
   const minusResult = this.numScore1 - this.numScore2
-  const status = Math.abs(minusResult) >= minimumWinningDiff ? victoryText : advantageText
+  const status = Math.abs(minusResult) >= minWinningDiff ? victoryText : advantageText
   const player = minusResult > 0 ? this.jugador1Name : this.jugador2Name
   return status + player
 }
