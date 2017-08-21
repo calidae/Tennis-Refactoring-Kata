@@ -1,4 +1,4 @@
-var TennisGame1 = function (jugador1Name, jugador2Name) {
+var TennisGame1 = function (jugador1Name = 'jugador1', jugador2Name = 'jugador2') {
   this.numScore1 = 0
   this.numScore2 = 0
   this.jugador1Name = jugador1Name
