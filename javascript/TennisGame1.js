@@ -41,13 +41,10 @@ TennisGame1.prototype.getScore = function () {
 }
 
 TennisGame1.prototype.getAdvantageOrVictory = function () {
-  let score = ''
   var minusResult = this.numScore1 - this.numScore2
-  if (minusResult === 1) score = 'Avantatge ' + this.jugador1Name
-  else if (minusResult === -1) score = 'Avantatge ' + this.jugador2Name
-  else if (minusResult >= 2) score = 'Victoria de ' + this.jugador1Name
-  else score = 'Victoria de ' + this.jugador2Name
-  return score
+  const status = Math.abs(minusResult) >= 2 ? 'Victoria de ' : 'Avantatge '
+  const player = minusResult > 0 ? this.jugador1Name : this.jugador2Name
+  return status + player
 }
 
 if (typeof window === 'undefined') {
