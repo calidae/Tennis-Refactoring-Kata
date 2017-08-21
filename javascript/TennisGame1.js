@@ -5,14 +5,14 @@ var TennisGame1 = function (jugador1Name = 'jugador1', jugador2Name = 'jugador2'
   this.jugador2Name = jugador2Name
 }
 
-const mapNumScoreToText = [
+const mapScoreToText = [
   'Res',
   'Quinze',
   'Trenta',
   'Quaranta'
 ]
 
-const mapNumScoreEqualToText = [
+const mapScoreEqualToText = [
   'Res-Tot',
   'Quinze-Tot',
   'Trenta-Tot'
@@ -34,21 +34,35 @@ TennisGame1.prototype.addPointToPlayer2 = function () {
 }
 
 TennisGame1.prototype.getScore = function () {
-  var score = ''
-  if (this.numScore1 === this.numScore2) {
-    score = mapNumScoreEqualToText[this.numScore1] || equalsText
-  } else if (this.numScore1 >= minimumWinningScore || this.numScore2 >= minimumWinningScore) {
+  let score
+  if (this.areTied()) {
+    score = this.getTiedText()
+  } else if (this.isAnyPlayerWinning()) {
     score = this.getAdvantageOrVictory()
   } else {
-    score += mapNumScoreToText[this.numScore1]
-    score += '-'
-    score += mapNumScoreToText[this.numScore2]
+    score = this.getNormalScores()
   }
   return score
 }
 
+TennisGame1.prototype.getNormalScores = function () {
+  return `${mapScoreToText[this.numScore1]}-${mapScoreToText[this.numScore2]}`
+}
+
+TennisGame1.prototype.getTiedText = function () {
+  return mapScoreEqualToText[this.numScore1] || equalsText
+}
+
+TennisGame1.prototype.areTied = function () {
+  return this.numScore1 === this.numScore2
+}
+
+TennisGame1.prototype.isAnyPlayerWinning = function () {
+  return this.numScore1 >= minimumWinningScore || this.numScore2 >= minimumWinningScore
+}
+
 TennisGame1.prototype.getAdvantageOrVictory = function () {
-  var minusResult = this.numScore1 - this.numScore2
+  const minusResult = this.numScore1 - this.numScore2
   const status = Math.abs(minusResult) >= minimumWinningDiff ? victoryText : advantageText
   const player = minusResult > 0 ? this.jugador1Name : this.jugador2Name
   return status + player
