@@ -52,10 +52,10 @@ var checkScore = function (jugador1Score, jugador2Score, expectedScore) {
     var game = new TennisGame()
     for (var i = 0; i < highestScore; i++) {
       if (i < jugador1Score) {
-        game.wonPoint('jugador1')
+        game.addPointToPlayer1()
       }
       if (i < jugador2Score) {
-        game.wonPoint('jugador2')
+        game.addPointToPlayer2()
       }
     }
     if (game.getScore() === expectedScore) {

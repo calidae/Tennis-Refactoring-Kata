@@ -61,10 +61,10 @@ var checkScore = function (reporter, TennisGame, jugador1Score, jugador2Score, e
     game = new TennisGame('jugador1', 'jugador2')
     for (i = 0; i < highestScore; i++) {
       if (i < jugador1Score) {
-        game.wonPoint('jugador1')
+        game.addPointToPlayer1()
       }
       if (i < jugador2Score) {
-        game.wonPoint('jugador2')
+        game.addPointToPlayer2()
       }
     }
     result = game.getScore()
