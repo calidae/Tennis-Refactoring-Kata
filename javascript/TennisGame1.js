@@ -18,6 +18,10 @@ const mapNumScoreEqualToText = [
   'Trenta-Tot'
 ]
 
+const equalsText = 'Iguals'
+const advantageText = 'Avantatge '
+const victoryText = 'Victoria de '
+
 const minimumWinningScore = 4
 const minimumWinningDiff = 2
 
@@ -32,7 +36,7 @@ TennisGame1.prototype.addPointToPlayer2 = function () {
 TennisGame1.prototype.getScore = function () {
   var score = ''
   if (this.numScore1 === this.numScore2) {
-    score = mapNumScoreEqualToText[this.numScore1] || 'Iguals'
+    score = mapNumScoreEqualToText[this.numScore1] || equalsText
   } else if (this.numScore1 >= minimumWinningScore || this.numScore2 >= minimumWinningScore) {
     score = this.getAdvantageOrVictory()
   } else {
@@ -45,7 +49,7 @@ TennisGame1.prototype.getScore = function () {
 
 TennisGame1.prototype.getAdvantageOrVictory = function () {
   var minusResult = this.numScore1 - this.numScore2
-  const status = Math.abs(minusResult) >= minimumWinningDiff ? 'Victoria de ' : 'Avantatge '
+  const status = Math.abs(minusResult) >= minimumWinningDiff ? victoryText : advantageText
   const player = minusResult > 0 ? this.jugador1Name : this.jugador2Name
   return status + player
 }
