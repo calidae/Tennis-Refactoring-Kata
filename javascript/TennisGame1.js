@@ -5,18 +5,21 @@ var TennisGame1 = function (jugador1Name = 'jugador1', jugador2Name = 'jugador2'
   this.jugador2Name = jugador2Name
 }
 
-TennisGame1.prototype.mapNumScoreToText = [
+const mapNumScoreToText = [
   'Res',
   'Quinze',
   'Trenta',
   'Quaranta'
 ]
 
-TennisGame1.prototype.mapNumScoreEqualToText = [
+const mapNumScoreEqualToText = [
   'Res-Tot',
   'Quinze-Tot',
   'Trenta-Tot'
 ]
+
+const minimumWinningScore = 4
+const minimumWinningDiff = 2
 
 TennisGame1.prototype.addPointToPlayer1 = function () {
   this.numScore1 += 1
@@ -29,20 +32,20 @@ TennisGame1.prototype.addPointToPlayer2 = function () {
 TennisGame1.prototype.getScore = function () {
   var score = ''
   if (this.numScore1 === this.numScore2) {
-    score = this.mapNumScoreEqualToText[this.numScore1] || 'Iguals'
-  } else if (this.numScore1 >= 4 || this.numScore2 >= 4) {
+    score = mapNumScoreEqualToText[this.numScore1] || 'Iguals'
+  } else if (this.numScore1 >= minimumWinningScore || this.numScore2 >= minimumWinningScore) {
     score = this.getAdvantageOrVictory()
   } else {
-    score += this.mapNumScoreToText[this.numScore1]
+    score += mapNumScoreToText[this.numScore1]
     score += '-'
-    score += this.mapNumScoreToText[this.numScore2]
+    score += mapNumScoreToText[this.numScore2]
   }
   return score
 }
 
 TennisGame1.prototype.getAdvantageOrVictory = function () {
   var minusResult = this.numScore1 - this.numScore2
-  const status = Math.abs(minusResult) >= 2 ? 'Victoria de ' : 'Avantatge '
+  const status = Math.abs(minusResult) >= minimumWinningDiff ? 'Victoria de ' : 'Avantatge '
   const player = minusResult > 0 ? this.jugador1Name : this.jugador2Name
   return status + player
 }
